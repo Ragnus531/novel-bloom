@@ -1,6 +1,8 @@
 ﻿using Microsoft.Extensions.Logging;
+using Microsoft.FluentUI.AspNetCore.Components;
 
 namespace NovelBloom;
+
 public static class MauiProgram
 {
     public static MauiApp CreateMauiApp()
@@ -13,11 +15,12 @@ public static class MauiProgram
                 fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
             });
 
+        builder.Services.AddFluentUIComponents();
         builder.Services.AddMauiBlazorWebView();
 
 #if DEBUG
-		builder.Services.AddBlazorWebViewDeveloperTools();
-		builder.Logging.AddDebug();
+        builder.Services.AddBlazorWebViewDeveloperTools();
+        builder.Logging.AddDebug();
 #endif
 
         return builder.Build();
